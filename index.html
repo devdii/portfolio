@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dev Chauhan - Developer</title>
+    <title>Dev Chauhan</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -39,19 +39,21 @@
                             <p class="typewriter-text"></p><span class="cursor"></span>
                         </div>
                         <p>
-                        <strong>A Master of Computer Applications (MCA) student specializing in Artificial Intelligence at Parul University.</strong>
-                        <br><br>
-                        I am proficient in several programming languages, including 
-                        <span style="color: #ff5722; font-weight: bold;">Python</span> & 
-                        <span style="color: #3f51b5; font-weight: bold;">Java</span>, 
-                        and have a strong foundation in software development, database management, and network security. 
-                        <br>
-                        My education at Parul University has equipped me with the skills and knowledge necessary to tackle complex IT challenges and develop innovative solutions.
-                        <br><br>
-                        <em style="color: #555;">You can reach out to me using the contact information below.</em><br><br>
-                    </p>
-                        <a href="./img/resume.pdf" class="btn-link" download id="resli"><span>Download Resume</span></a>
-                    </div><br>
+                            <strong>A Master of Computer Applications (MCA) student specializing in Artificial Intelligence at Parul University.</strong>
+                            <br><br> I am proficient in several programming languages, including
+                            <span style="color: #ff5722; font-weight: bold;">Python</span> &
+                            <span style="color: #3f51b5; font-weight: bold;">Java</span>, and have a strong foundation in software development, database management, and network security.
+                            <br><br> My education at Parul University has equipped me with the skills and knowledge necessary to tackle complex IT challenges and develop innovative solutions.
+                            <br><br>
+                            <em style="color: #555;">You can reach out to me using the contact information below.</em><br>  
+                        </p>
+                        <div download class="download-resume">
+                            <a href="./img/resume.pdf" download class="download-resume">
+                                Download Resume
+                            </a>
+                        </div>
+                            <br>
+                    </div>
                 </div>
                 <div class="col-md-6 text-center">
                     <div class="welcome-image">
@@ -62,37 +64,37 @@
         </div>
     </section>
 
-<!-- Skills Section -->
-<section id="skills" class="py-5">
-    <div class="container">
-        <h2 class="text-center mb-4">Skills</h2>
-        <div class="skills-container">
-            <div class="skill-card">
-                <i class="bi bi-laptop"></i>
-                <h3>Web Development</h3>
-                <p>Experience in HTML, CSS, JavaScript, and frameworks like Bootstrap and React.</p>
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i class="bi bi-laptop"></i>
+                    <h3>Web Development</h3>
+                    <p>Experience in HTML, CSS, JavaScript, and frameworks like Bootstrap and React.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="bi bi-gear"></i>
+                    <h3>Software Engineering</h3>
+                    <p>Proficient in software design, development, and testing methodologies.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="bi bi-database"></i>
+                    <h3>Database Management</h3>
+                    <p>Knowledgeable in SQL, NoSQL, and data modeling techniques.</p>
+                </div>
+                <!-- Add more skill cards as needed -->
             </div>
-            <div class="skill-card">
-                <i class="bi bi-gear"></i>
-                <h3>Software Engineering</h3>
-                <p>Proficient in software design, development, and testing methodologies.</p>
-            </div>
-            <div class="skill-card">
-                <i class="bi bi-database"></i>
-                <h3>Database Management</h3>
-                <p>Knowledgeable in SQL, NoSQL, and data modeling techniques.</p>
-            </div>
-            <!-- Add more skill cards as needed -->
         </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- Achievements Section -->
     <section id="achievements" class="py-5 bg-dark text-light">
         <div class="container">
             <h2 class="text-center mb-5">Achievements</h2>
-    
+
             <div class="heading text-center mb-4">
                 <h2 id="certificates">Certificates</h2>
             </div>
@@ -138,7 +140,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="heading text-center mb-4">
                 <h2 id="projects">Projects</h2>
             </div>
@@ -173,105 +175,102 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Tic Tac Toe</h5>
-                            <p class="card-text">An interactive game built with HTML, CSS, and JavaScript featuring a responsive design and real-time player interaction.</p>
-                            <a href="https://github.com/devdii/tic-tac-toe" class="btn btn-primary" target="_blank">View Code</a>
-                            <img src="./img/tic_tac_toe.png" class="img-fluid project-img mt-3" alt="Tic Tac Toe Project">
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Form -->
+                <div class="col-md-6">
+                    <h2 class="text-center mb-4">Contact Me</h2>
+                    <form name="submit-to-google-sheet" id="contact-form" onsubmit="return sendMail();" method="POST">
+                        <div class="mb-3">
+                            <input type="text" id="Name" name="NAME" class="form-control" placeholder="Enter Your Name" required>
                         </div>
+                        <div class="mb-3">
+                            <input type="email" id="Email" name="EMAIL" class="form-control" placeholder="Enter Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea name="MESSAGE" id="MESSAGE" class="form-control" rows="5" placeholder="Enter Message or Query Here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                        <div id="msg" class="mt-3 text-center"></div>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-md-6">
+                    <h2 class="text-center mb-4">Contact Information</h2>
+                    <div class="contact-info mb-4" style="text-align: center;">
+                        <table style="margin: 0 auto;">
+                            <tr>
+                                <td><i class="bi bi-geo-alt"></i></td>
+                                <td><strong>:</strong> Vadodara, Gujarat</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-envelope"></i></td>
+                                <td><strong>:</strong> <a href="mailto:devc5@outlook.com">devc5@outlook.com</a></td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-telephone"></i></td>
+                                <td><strong>:</strong> <a href="tel:+919067715176">+91 9067715176</a></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Social Links -->
+                    <h2 class="text-center">Stay Connected</h2>
+                    <div class="social-link">
+                        <ul class="list-unstyled text-center" style="display: flex; justify-content: center; padding: 0; margin: 0;">
+                            <li style="margin: 0 10px;"><a href="https://github.com/devdii" class="text-light" target="_blank"><i class="bi bi-github"></i></a></li>
+                            <li style="margin: 0 10px;"><a href="https://www.instagram.com/devdii_/" class="text-light" target="_blank"><i class="bi bi-instagram"></i></a></li>
+                            <li style="margin: 0 10px;"><a href="https://www.linkedin.com/in/dev-chauhan-52b2a4260/" class="text-light" target="_blank"><i class="bi bi-linkedin"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- Contact Section -->
-<section id="contact" class="py-5 bg-dark text-light">
-    <div class="container">
-        <div class="row">
-            <!-- Contact Form -->
-            <div class="col-md-6">
-                <h2 class="text-center mb-4">CONTACT ME</h2>
-                <form name="submit-to-google-sheet" id="contact-form" onsubmit="return sendMail();" method="POST">
-                    <div class="mb-3">
-                        <input type="text" id="Name" name="NAME" class="form-control" placeholder="Enter Your Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="email" id="Email" name="EMAIL" class="form-control" placeholder="Enter Your Email" required>
-                    </div>
-                    <div class="mb-3">
-                        <textarea name="MESSAGE" id ="MESSAGE" class="form-control" rows="5" placeholder="Enter Message or Query Here..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <div id="msg" class="mt-3 text-center"></div>
-                </form>
-            </div>
 
-            <!-- Contact Info -->
-            <div class="col-md-6">
-                <h2 class="text-center mb-4">Contact Information</h2>
-                <div class="contact-info mb-4">
-                    <p><i class="bi bi-geo-alt"></i> <strong>Location: </strong> Vadodara, Gujarat</p>
-                    <p><i class="bi bi-envelope"></i> <strong>Email: </strong> <a href="mailto:devc5@outlook.com">devc5@outlook.com</a></p>
-                    <p><i class="bi bi-telephone"></i> <strong>Phone: </strong> <a href="tel:+919067715176">+91 9067715176</a></p>
-                </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzytbnMpGza_3OghB9fR7StSyyWZqgFCdymFX12VaAjeWhzr8U_imu6a1CSPgir1zbjuA/exec';
+        const form = document.getElementById('contact-form');
+        const msg = document.getElementById('msg');
 
-                <!-- Social Links -->
-                <h2 class="text-center mb-4">Connect with Me</h2>
-                <div class="social-link">
-                    <ul class="list-unstyled text-center">
-                        <li><a href="https://github.com/devdii" class="text-light" target="_blank"><i class="bi bi-github"></i> GitHub</a></li>
-                        <li><a href="https://www.instagram.com/devdii_/" class="text-light" target="_blank"><i class="bi bi-instagram"></i> Instagram</a></li>
-                        <li><a href="https://www.linkedin.com/in/dev-chauhan-52b2a4260/" class="text-light" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzytbnMpGza_3OghB9fR7StSyyWZqgFCdymFX12VaAjeWhzr8U_imu6a1CSPgir1zbjuA/exec';
-    const form = document.getElementById('contact-form');
-    const msg = document.getElementById('msg');
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        fetch(scriptURL, {
-            method: 'POST',
-            body: new FormData(form)
-        })
-        .then(response => {
-            msg.innerHTML = "<span class='text-success'>Message Sent Successfully!</span>";
-            setTimeout(() => {
-                msg.innerHTML = "";
-            }, 3000);
-            form.reset();
-        })
-        .catch(error => {
-            msg.innerHTML = "<span class='text-danger'>Failed to send message. Please try again.</span>";
-            console.error('Error!', error.message);
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => {
+                    msg.innerHTML = "<span class='text-success'>Message Sent Successfully!</span>";
+                    setTimeout(() => {
+                        msg.innerHTML = "";
+                    }, 3000);
+                    form.reset();
+                })
+                .catch(error => {
+                    msg.innerHTML = "<span class='text-danger'>Failed to send message. Please try again.</span>";
+                    console.error('Error!', error.message);
+                });
         });
-    });
-</script>
-<!-- Footer Section -->
-<footer>
-    <div class="footer-container">
-        <!-- Copyright Information -->
-        <div class="footer-copyright">
-            &copy; 2024 Dev Chauhan All rights reserved.
-        </div>
-    </div>
-</footer>
+    </script>
+    <!-- Footer Section -->
+
 
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybL1Kv5KLr2M9+97xGp8e3FJw3NzEfl1k4wE9k3FkfD4ZlTC0r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-c1tZq52a0Gb7oFwB+88ik39WaC5CUm2A5pKb9j9Hc4e8i3m7S9P1xDabMpe1+GhC" crossorigin="anonymous"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var scroll = new SmoothScroll('a[href*="#"]', {
                 speed: 800,
                 speedAsDuration: true,
@@ -280,11 +279,11 @@
         });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var navbarToggler = document.querySelector('.navbar-toggler');
             var navbarCollapse = document.querySelector('#navbarNav');
-    
-            navbarToggler.addEventListener('click', function () {
+
+            navbarToggler.addEventListener('click', function() {
                 navbarCollapse.classList.toggle('show');
             });
         });
@@ -330,37 +329,37 @@
             startTyping(); // Start typing effect on page load
         });
     </script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script type="text/javascript">
-    // Initialize EmailJS with your EmailJS user ID
-    (function() {
-        emailjs.init("gAu2jSkT5Yhcu0qPA");
-    })();
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your EmailJS user ID
+        (function() {
+            emailjs.init("gAu2jSkT5Yhcu0qPA");
+        })();
 
-    // Function to send email using EmailJS and handle form submission
-    function sendMail() {
-        var formData = new FormData(document.getElementById("contact-form"));
-        var params = {
-            name: formData.get("NAME"),
-            email: formData.get("EMAIL"),
-            message: formData.get("MESSAGE"),
-        };
+        // Function to send email using EmailJS and handle form submission
+        function sendMail() {
+            var formData = new FormData(document.getElementById("contact-form"));
+            var params = {
+                name: formData.get("NAME"),
+                email: formData.get("EMAIL"),
+                message: formData.get("MESSAGE"),
+            };
 
-        // Send email using EmailJS
-        emailjs.send("service_zxfpkie", "template_2xtwqdo", params)
-            .then(function(response) {
-                console.log("Email sent:", response);
-                document.getElementById("successMessage").style.display = "block";
-                document.getElementById("errorMessage").style.display = "none";
-            })
-            .catch(function(error) {
-                console.error("Error sending email:", error);
-                document.getElementById("errorMessage").style.display = "block";
-                document.getElementById("successMessage").style.display = "none";
-                alert("Failed to send message via email. Please try again later.");
-            });
-    }
-</script>
+            // Send email using EmailJS
+            emailjs.send("service_zxfpkie", "template_2xtwqdo", params)
+                .then(function(response) {
+                    console.log("Email sent:", response);
+                    document.getElementById("successMessage").style.display = "block";
+                    document.getElementById("errorMessage").style.display = "none";
+                })
+                .catch(function(error) {
+                    console.error("Error sending email:", error);
+                    document.getElementById("errorMessage").style.display = "block";
+                    document.getElementById("successMessage").style.display = "none";
+                    alert("Failed to send message via email. Please try again later.");
+                });
+        }
+    </script>
 
 </body>
 
