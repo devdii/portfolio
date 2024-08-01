@@ -43,9 +43,7 @@ body {
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%255, %255, %255, 1%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    width: 30px;
-    height: 30px;
+   
     transition: transform 0.3s ease; /* Animation for icon */
 }
 
@@ -184,47 +182,45 @@ h1, h2 {
     100% { background-position: 0% 50% }
 }
 /* Button Link Styles */
-.btn-link {
-    position: relative;
+.download-resume a {
     display: inline-block;
+    margin-top: 10px;
     padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #007BFF;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform transition */
-    margin: 0 26px;
-}
-
-.btn-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
+    transition: ease all 0.35s;
+    color: var(--color1);
+    font-family: 'Poppins', sans-serif;
     background-color: #ff5252;
-    transition: width 0.3s ease;
-    z-index: 0;
-}
-
-.btn-link:hover::before {
-    width: 100%;
-}
-
-.btn-link:hover {
-    transform: translateY(-3px); /* Lift effect on hover */
-}
-
-.btn-link span {
     position: relative;
-    z-index: 1;
+    z-index: 1001;
+    text-transform: uppercase;
+    line-height: 30px;
+    text-decoration: none;
+    border-radius: 10px;
 }
 
+.download-resume a::before {
+    background-color: #44F;
+}
+
+.download-resume a::before {
+    top: 0;
+    width: 0;
+    left: auto;
+    right: 0;
+    z-index: -1;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+}
+
+.download-resume a:hover::before {
+    left: 0;
+    width: 100%;
+    right: auto;
+    border-radius: 10px;
+
+}
 /* Responsive Styles */
 @media (max-width: 1024px) {
     .slider-general {
@@ -489,12 +485,21 @@ section p {
     transform: translateZ(10px) scale(1.05); /* Hover effect with scale */
 }
 
+/* Centering Contact Info */
+#contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 /* Contact Info Styles */
 #contact .contact-info p {
     font-size: 1.2rem; /* Font size */
     margin: 0.5rem 0; /* Space between items */
     display: flex; /* Flexbox for icons and text */
     align-items: center; /* Center align items */
+    justify-content: center; /* Center align text */
 }
 
 #contact .contact-info i {
@@ -511,7 +516,7 @@ section p {
 
 /* Contact Info Links */
 #contact .contact-info a {
-    color: #DCE2F0; /* Link color */
+    color: inherit; /* Inherit color from parent */
     text-decoration: none; /* Remove underline */
     transition: color 0.3s ease; /* Smooth transition */
 }
@@ -520,24 +525,7 @@ section p {
     color: #ff5252; /* Link color on hover */
 }
 
-/* Social Links Styles */
-#contact .social-link ul {
-    list-style: none; /* Remove bullets */
-    padding: 0; /* Remove padding */
-    display: flex; /* Flexbox for horizontal alignment */
-    justify-content: center; /* Center align items */
-    gap: 20px; /* Space between social links */
-}
-
-#contact .social-link ul li {
-    display: inline-block; /* Inline display */
-    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
-}
-
-#contact .contact-info strong {
-    margin-right: 10px; /* Space between strong text and link */
-}
-
+/* General styles for social links */
 #contact .social-link ul li a {
     color: #DCE2F0; /* Social link color */
     text-decoration: none; /* Remove underline */
@@ -555,6 +543,24 @@ section p {
 #contact .social-link ul li a i {
     margin-right: 10px; /* Space between icon and text */
 }
+
+/* Center align social links on small devices */
+@media (max-width: 600px) {
+    #contact .social-link ul {
+        display: flex;
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center align links */
+    }
+    
+    #contact .social-link ul li {
+        margin-bottom: 10px; /* Space between each link */
+    }
+    
+    #contact .social-link ul li a {
+        justify-content: center; /* Center align text and icon */
+    }
+}
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -1024,8 +1030,4 @@ footer {
     .card a.btn {
         padding: 0.4rem 1rem;
     }
-}
-#resli{
-    text-decoration:none;
-      
 }
