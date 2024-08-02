@@ -45,14 +45,14 @@
                             <span style="color: #3f51b5; font-weight: bold;">Java</span>, and have a strong foundation in software development, database management, and network security.
                             <br><br> My education at Parul University has equipped me with the skills and knowledge necessary to tackle complex IT challenges and develop innovative solutions.
                             <br><br>
-                            <em style="color: #555;">You can reach out to me using the contact information below.</em><br>  
+                            <em style="color: #555;">You can reach out to me using the contact information below.</em><br>
                         </p>
                         <div download class="download-resume">
                             <a href="./img/resume.pdf" download class="download-resume">
                                 Download Resume
                             </a>
                         </div>
-                            <br>
+                        <br>
                     </div>
                 </div>
                 <div class="col-md-6 text-center">
@@ -84,7 +84,12 @@
                     <h3>Database Management</h3>
                     <p>Knowledgeable in SQL, NoSQL, and data modeling techniques.</p>
                 </div>
-                <!-- Add more skill cards as needed -->
+                <div class="skill-card">
+                    <i class="bi bi-person-gear"></i>
+                    <h3>Soft Skills</h3>
+                    <p>Effective Communication, Adaptability, Quick Learner.</p>
+                </div>
+
             </div>
         </div>
     </section>
@@ -94,7 +99,7 @@
     <section id="achievements" class="py-5 bg-dark text-light">
         <div class="container">
             <h2 class="text-center mb-5">Achievements</h2>
-
+            <hr>
             <div class="heading text-center mb-4">
                 <h2 id="certificates">Certificates</h2>
             </div>
@@ -169,7 +174,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Slot Machine</h5>
-                            <p class="card-text">This JavaScript-based mini project features interactive moving icons and dynamic updates to reflect player results.</p>
+                            <p class="card-text">This JavaScript project features interactive icons and dynamic player results.</p>
                             <a href="https://github.com/devdii/slot-machine" class="btn btn-primary" target="_blank">View Code</a>
                             <img src="./img/slot_machine.png" class="img-fluid project-img mt-3" alt="Slot Machine Project">
                         </div>
@@ -181,12 +186,11 @@
     </section>
 
     <!-- Contact Section -->
-    <!-- Contact Section -->
     <section id="contact" class="py-5 bg-dark text-light">
         <div class="container">
             <div class="row">
                 <!-- Contact Form -->
-                <div class="col-md-6">
+                <div>
                     <h2 class="text-center mb-4">Contact Me</h2>
                     <form name="submit-to-google-sheet" id="contact-form" onsubmit="return sendMail();" method="POST">
                         <div class="mb-3">
@@ -203,37 +207,23 @@
                     </form>
                 </div>
 
-                <!-- Contact Info -->
-                <div class="col-md-6">
-                    <h2 class="text-center mb-4">Contact Information</h2>
-                    <div class="contact-info mb-4" style="text-align: center;">
-                        <table style="margin: 0 auto;">
-                            <tr>
-                                <td><i class="bi bi-geo-alt"></i></td>
-                                <td><strong>:</strong> Vadodara, Gujarat</td>
-                            </tr>
-                            <tr>
-                                <td><i class="bi bi-envelope"></i></td>
-                                <td><strong>:</strong> <a href="mailto:devc5@outlook.com">devc5@outlook.com</a></td>
-                            </tr>
-                            <tr>
-                                <td><i class="bi bi-telephone"></i></td>
-                                <td><strong>:</strong> <a href="tel:+919067715176">+91 9067715176</a></td>
-                            </tr>
-                        </table>
-                    </div>
+                <!-- Social Links -->
 
-                    <!-- Social Links -->
-                    <h2 class="text-center">Stay Connected</h2>
-                    <div class="social-link">
-                        <ul class="list-unstyled text-center" style="display: flex; justify-content: center; padding: 0; margin: 0;">
-                            <li style="margin: 0 10px;"><a href="https://github.com/devdii" class="text-light" target="_blank"><i class="bi bi-github"></i></a></li>
-                            <li style="margin: 0 10px;"><a href="https://www.instagram.com/devdii_/" class="text-light" target="_blank"><i class="bi bi-instagram"></i></a></li>
-                            <li style="margin: 0 10px;"><a href="https://www.linkedin.com/in/dev-chauhan-52b2a4260/" class="text-light" target="_blank"><i class="bi bi-linkedin"></i></a></li>
-                        </ul>
-                    </div>
+                <div class="social-link">
+                    <ul class="list-unstyled text-center"></ul>
+
+                    <h3 id="stay">Stay Connected</h3>
+                    <p id="location">Vadodara, Gujarat</p>
+                    <p id="email">Devc5@outlook.com</p>
+                    <p id="phone">+91 9067715176</p>
+                    <hr class="new4">
+                    <a href="https://github.com/devdii" class="text-light" style="margin: 0 20px; font-size: 24px;" target="_blank"><i class="bi bi-github"></i></a>
+                    <a href="https://www.instagram.com/devdii_/" class="text-light" style="margin: 0 20px; font-size: 24px;" target="_blank"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/dev-chauhan-52b2a4260/" class="text-light" style="margin: 0 20px; font-size: 24px;" target="_blank"><i class="bi bi-linkedin"></i></a>
                 </div>
+
             </div>
+        </div>
         </div>
     </section>
 
@@ -250,10 +240,10 @@
                     body: new FormData(form)
                 })
                 .then(response => {
-                    msg.innerHTML = "<span class='text-success'>Message Sent Successfully!</span>";
+                    msg.innerHTML = "<span class='text-success'>Message Sent Successfully!, Check Your Email for details.</span>";
                     setTimeout(() => {
                         msg.innerHTML = "";
-                    }, 3000);
+                    }, 20000); // Message will be visible for 20 seconds
                     form.reset();
                 })
                 .catch(error => {
@@ -262,10 +252,6 @@
                 });
         });
     </script>
-    <!-- Footer Section -->
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybL1Kv5KLr2M9+97xGp8e3FJw3NzEfl1k4wE9k3FkfD4ZlTC0r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-c1tZq52a0Gb7oFwB+88ik39WaC5CUm2A5pKb9j9Hc4e8i3m7S9P1xDabMpe1+GhC" crossorigin="anonymous"></script>
