@@ -1,4 +1,150 @@
-/* General Body Styles */
+/* Star Backgrounds */
+
+.stars,
+.stars2,
+.stars3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* Ensure stars are behind everything else */
+    pointer-events: none;
+    /* Prevent interaction with stars */
+    background-repeat: repeat;
+    background-size: cover;
+    overflow: hidden;
+    /* Ensure no overflow issues */
+}
+
+
+/* First Layer of Stars */
+
+.stars {
+    background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
+    animation: moveStars 60s linear infinite, twinkle 3s infinite ease-in-out alternate;
+}
+
+
+/* Second Layer of Stars */
+
+.stars2 {
+    background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
+    animation: moveStars2 120s linear infinite, twinkle 5s infinite ease-in-out alternate;
+    opacity: 0.6;
+}
+
+
+/* Third Layer of Stars */
+
+.stars3 {
+    background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
+    animation: moveStars3 180s linear infinite, twinkle 7s infinite ease-in-out alternate;
+    opacity: 0.3;
+}
+
+
+/* Keyframes for Star Movement */
+
+@keyframes moveStars {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -3000px 1500px;
+    }
+}
+
+@keyframes moveStars2 {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -6000px 3000px;
+    }
+}
+
+@keyframes moveStars3 {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -9000px 4500px;
+    }
+}
+
+
+/* Keyframes for Twinkling Effect */
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+
+/* Responsive Background Adjustments */
+
+@media (max-width: 1024px) {
+    .stars,
+    .stars2,
+    .stars3 {
+        background-size: 200% 200%;
+        /* Adjust background size for smaller screens */
+    }
+    .stars {
+        animation: moveStars 50s linear infinite, twinkle 3s infinite ease-in-out alternate;
+    }
+    .stars2 {
+        animation: moveStars2 100s linear infinite, twinkle 5s infinite ease-in-out alternate;
+    }
+    .stars3 {
+        animation: moveStars3 150s linear infinite, twinkle 7s infinite ease-in-out alternate;
+    }
+}
+
+@media (max-width: 768px) {
+    .stars,
+    .stars2,
+    .stars3 {
+        background-size: 300% 300%;
+        /* Further adjust background size */
+    }
+    .stars {
+        animation: moveStars 40s linear infinite, twinkle 3s infinite ease-in-out alternate;
+    }
+    .stars2 {
+        animation: moveStars2 80s linear infinite, twinkle 5s infinite ease-in-out alternate;
+    }
+    .stars3 {
+        animation: moveStars3 120s linear infinite, twinkle 7s infinite ease-in-out alternate;
+    }
+}
+
+@media (max-width: 480px) {
+    .stars,
+    .stars2,
+    .stars3 {
+        background-size: 400% 400%;
+        /* Adjust background size for very small screens */
+    }
+    .stars {
+        animation: moveStars 30s linear infinite, twinkle 3s infinite ease-in-out alternate;
+    }
+    .stars2 {
+        animation: moveStars2 60s linear infinite, twinkle 5s infinite ease-in-out alternate;
+    }
+    .stars3 {
+        animation: moveStars3 90s linear infinite, twinkle 7s infinite ease-in-out alternate;
+    }
+}
 
 body {
     background-color: #50586C;
@@ -133,20 +279,17 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     background: linear-gradient(135deg, #1e2023, #2d3237);
-    /* Subtle gradient background */
     border-radius: 10px;
-    /* Rounded corners */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    /* Shadow effect */
     transition: background 0.3s ease, box-shadow 0.3s ease;
-    /* Smooth transitions */
+    position: relative;
+    z-index: 1;
+    /* Ensure it stays above the background */
 }
 
 .portfolio-container:hover {
     background: linear-gradient(135deg, #2d3237, #1e2023);
-    /* Darker gradient on hover */
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-    /* Enhanced shadow on hover */
 }
 
 
@@ -159,7 +302,8 @@ h2 {
     margin-bottom: 1rem;
     color: #DCE2F0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    /* Subtle text shadow */
+    position: relative;
+    z-index: 1;
 }
 
 .welcome-image img {
@@ -169,13 +313,13 @@ h2 {
     vertical-align: middle;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .welcome-image img:hover {
     transform: scale(1.05);
-    /* Zoom effect on hover */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    /* Shadow effect on hover */
 }
 
 .typewriter-container {
@@ -183,6 +327,8 @@ h2 {
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -202,40 +348,8 @@ h2 {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: gradient 5s ease infinite;
-}
-
-
-/* Keyframes */
-
-@keyframes typing {
-    from {
-        width: 0
-    }
-    to {
-        width: 100%
-    }
-}
-
-@keyframes blink-caret {
-    from,
-    to {
-        border-color: transparent
-    }
-    50% {
-        border-color: orange
-    }
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%
-    }
-    50% {
-        background-position: 100% 50%
-    }
-    100% {
-        background-position: 0% 50%
-    }
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -259,6 +373,22 @@ h2 {
 
 .download-resume a::before {
     background-color: #44F;
+    position: absolute;
+    top: 0;
+    width: 0;
+    left: auto;
+    right: 0;
+    z-index: 0;
+    bottom: 0;
+    content: "";
+    transition: all 0.3s ease-in-out;
+}
+
+.download-resume a:hover::before {
+    left: 0;
+    width: 100%;
+    right: auto;
+    border-radius: 10px;
 }
 
 .download-resume a::before {
@@ -273,30 +403,12 @@ h2 {
     transition: all 0.3s ease-in-out;
 }
 
-.download-resume a:hover::before {
-    left: 0;
-    width: 100%;
-    right: auto;
-    border-radius: 10px;
-}
-
 
 /* Responsive Styles */
 
 @media (max-width: 1024px) {
-    .slider-general {
-        width: 100%;
-    }
-    .slider-image {
-        width: 100%;
-        margin-top: 20px;
-    }
     .portfolio-container {
         padding: 1.5rem;
-    }
-    .btn-link {
-        padding: 8px 16px;
-        font-size: 14px;
     }
     h1,
     h2 {
@@ -305,20 +417,8 @@ h2 {
 }
 
 @media (max-width: 768px) {
-    .slider-content {
-        flex-direction: column;
-    }
-    .slider-general,
-    .slider-image {
-        width: 100%;
-        margin-top: 20px;
-    }
     .portfolio-container {
         padding: 1rem;
-    }
-    .btn-link {
-        padding: 6px 12px;
-        font-size: 12px;
     }
     h1,
     h2 {
@@ -327,18 +427,11 @@ h2 {
 }
 
 @media (max-width: 480px) {
-    .slider-content {
-        padding: 10px;
-    }
-    .slider-general {
-        padding: 10px;
+    .portfolio-container {
+        padding: 1rem;
     }
     .welcome-msg {
         font-size: 1.5rem;
-    }
-    .btn-link {
-        padding: 5px 10px;
-        font-size: 10px;
     }
     h1,
     h2 {
@@ -347,14 +440,14 @@ h2 {
 }
 
 
-/* Fade-in Keyframes */
+/* Keyframes for Star Animation */
 
-@keyframes fadeIn {
+@keyframes moveStars {
     from {
-        opacity: 0;
+        background-position: 0 0;
     }
     to {
-        opacity: 1;
+        background-position: -10000px 5000px;
     }
 }
 
@@ -366,19 +459,13 @@ section {
     text-align: center;
 }
 
-
-/* Specific Sections Backgrounds */
-
-#skills {
-    background-color: #343a40;
-    color: #DCE2F0;
-    /* Light text color for contrast */
-}
-
 #achievements {
     background-color: #454C5D;
     color: #ffffff;
-    /* Light text color for contrast */
+    z-index: 1;
+    /* Ensure these sections are above the star background */
+    position: relative;
+    /* Allows z-index to take effect */
 }
 
 
@@ -389,7 +476,10 @@ section h2 {
     margin-bottom: 1rem;
     color: #ffffff;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-    /* Text shadow for depth */
+    z-index: 1;
+    /* Ensure these sections are above the star background */
+    position: relative;
+    /* Allows z-index to take effect */
 }
 
 
@@ -401,6 +491,10 @@ section p {
     max-width: 800px;
     margin: 0 auto;
     color: #ffffff;
+    z-index: 1;
+    /* Ensure these sections are above the star background */
+    position: relative;
+    /* Allows z-index to take effect */
 }
 
 
@@ -414,13 +508,16 @@ section p {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     /* Shadow for depth */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+    /* Ensure these are above the star background */
+    position: relative;
+    /* Allows z-index to take effect */
 }
 
 .card:hover {
     transform: translateY(-10px);
     /* Lift effect */
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-    /* Enhanced shadow */
 }
 
 
@@ -493,6 +590,8 @@ section p {
 /* General Styles */
 
 #contact {
+    position: relative;
+    /* Ensure contact section is positioned correctly */
     background-color: #50586C;
     /* Background color */
     color: #DCE2F0;
@@ -501,6 +600,8 @@ section p {
     /* 3D effect perspective */
     padding: 2rem 0;
     /* Add padding for better spacing */
+    overflow: hidden;
+    /* Hide overflow to prevent any issues with the background */
 }
 
 
@@ -789,9 +890,6 @@ section p {
     }
 }
 
-
-/* Achievements and Projects Styles */
-
 .certi,
 .project {
     background-color: #50586C;
@@ -801,22 +899,20 @@ section p {
     flex-wrap: wrap;
     gap: 1rem;
     margin: 2rem 0;
-    /* Adjusted margin for consistency */
     padding: 2rem;
-    /* Added padding for spacing */
     border-radius: 10px;
-    /* Rounded corners for a modern look */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    /* Shadow for depth */
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+    /* Ensure these sections are above the star background */
+    position: relative;
+    /* Position relative to control z-index stacking */
 }
 
 .certi:hover,
 .project:hover {
     background-color: #4a567a;
-    /* Darker background on hover */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    /* Enhanced shadow on hover */
 }
 
 .certi .card,
@@ -824,7 +920,6 @@ section p {
     width: 100%;
     max-width: 100%;
     border-radius: 10px;
-    /* Rounded corners for cards */
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -832,9 +927,7 @@ section p {
 .certi .card:hover,
 .project .card:hover {
     transform: translateY(-10px);
-    /* Lift effect */
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-    /* Enhanced shadow */
 }
 
 
@@ -846,17 +939,13 @@ section p {
     height: auto;
     transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Initial shadow */
 }
 
 .certi-img:hover,
 .project-img:hover {
     transform: scale(1.1) rotateY(5deg) rotateX(5deg);
-    /* More pronounced 3D effect */
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
-    /* Enhanced shadow */
     filter: brightness(1.2);
-    /* Brighten image on hover */
 }
 
 
@@ -1057,7 +1146,9 @@ footer {
     padding: 50px 0;
     /* Padding for spacing */
     position: relative;
-    /* Relative positioning for animation */
+    /* Relative positioning to stack star layers behind */
+    z-index: 1;
+    /* Ensure #skills is above the star background */
 }
 
 #skills h2 {
@@ -1095,6 +1186,10 @@ footer {
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     /* Animation for hover effects */
+    z-index: 2;
+    /* Ensure skill cards are above the star background */
+    position: relative;
+    /* Position relative to control z-index stacking */
 }
 
 .skill-card:hover {
