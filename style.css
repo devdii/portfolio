@@ -329,8 +329,8 @@ h2 {
     text-align: center;
     position: relative;
     z-index: 1;
+    perspective: 1000px; /* Add perspective for 3D effect */
 }
-
 
 /* Typewriter Effect */
 
@@ -338,18 +338,29 @@ h2 {
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
-    border-right: 2px solid orange;
+    border-right: 2px solid rgba(255, 255, 255, 0.75); /* Change to a more futuristic color */
     animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
-    font-size: calc(1.2em + 1vw);
+    font-size: calc(1.5em + 1vw); /* Increase font size for a bolder look */
     margin: 0;
     background: linear-gradient(90deg, #d4fc79, #00c6ff, #ff6666);
     background-size: 400% 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: gradient 5s ease infinite;
+    animation: gradient 5s ease infinite, glow 1.5s ease-in-out infinite alternate; /* Add glow effect */
     position: relative;
     z-index: 1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 198, 255, 0.5); /* Add glowing text shadow */
+}
+
+/* Keyframes for Glow Effect */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 198, 255, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(0, 198, 255, 1);
+    }
 }
 
 
