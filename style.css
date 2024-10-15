@@ -22,27 +22,10 @@
 /* First Layer of Stars */
 
 .stars {
-    background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
+    background: url('./img/magicpattern-starry-night-1728928276772.png') repeat;
     animation: moveStars 60s linear infinite, twinkle 3s infinite ease-in-out alternate;
 }
 
-
-/* Second Layer of Stars */
-
-.stars2 {
-    background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
-    animation: moveStars2 120s linear infinite, twinkle 5s infinite ease-in-out alternate;
-    opacity: 0.6;
-}
-
-
-/* Third Layer of Stars */
-
-.stars3 {
-    background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
-    animation: moveStars3 180s linear infinite, twinkle 7s infinite ease-in-out alternate;
-    opacity: 0.3;
-}
 
 
 /* Keyframes for Star Movement */
