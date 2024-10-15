@@ -36,8 +36,6 @@
         <div class="container">
             <!-- Star Background Layers -->
             <div class="stars"></div>
-            <div class="stars2"></div>
-            <div class="stars3"></div>
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <h1 class="welcome-msg">
@@ -47,25 +45,15 @@
                             function updateGreeting() {
                                 const now = new Date();
                                 const hours = now.getHours();
-                                const minutes = now.getMinutes();
-                                const seconds = now.getSeconds();
                                 
                                 // Define greeting based on the current hour
-                                const greeting = hours < 12 ? "Good Morning!" :
-                                                 hours < 18 ? "Good Afternoon!" : "Good Evening!";
+                                const greeting = hours >= 5 && hours < 12 ? "Good Morning!" :
+                                                 hours >= 12 && hours < 16 ? "Good Afternoon!" : 
+                                                 hours >= 16 && hours < 19 ? "Good Evening!" :
+                                                 "Good Night!";
                                                  
-                                // Format the time with Intl.DateTimeFormat for better localization
-                                const timeFormatter = new Intl.DateTimeFormat('en-US', {
-                                    hour: '2-digit',
-                                    minute: '2-digit',
-                                    second: '2-digit',
-                                    hour12: true
-                                });
-                    
-                                const timeString = timeFormatter.format(now);
-                                
-                                // Update the greeting element with the current greeting and time
-                                greetingElement.innerHTML = `Welcome!!! ${greeting}<br><span class="time">${timeString}</span>`;
+                                // Update the greeting element with the current greeting
+                                greetingElement.innerHTML = `Welcome!!! ${greeting}`;
                             }
                             
                             updateGreeting();  // Initial call to display greeting immediately
