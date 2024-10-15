@@ -18,7 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> <!-- Added Lottie for animations -->
     <style>
         body {
-            overflow: scroll; /* Prevent scrolling for 3D effect */
+            overflow: auto; /* Allow scrolling for responsiveness */
         }
         .background-animation {
             position: absolute;
@@ -28,10 +28,176 @@
             height: 100%;
             z-index: -1;
         }
+
+        @media (max-width: 768px) {
+            .background-animation {
+                height: auto; /* Adjust height for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .background-animation {
+                height: auto; /* Adjust height for very small screens */
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div id="preloader">
+        <div class="loader"></div>
+        <div class="loader-text">Loading, please wait...</div>
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="additional-message">This may take a moment, thank you for your patience!</div>
+        <div class="spinner-container">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <script>
+        // Function to disable scrolling
+        function disableScroll() {
+            document.body.style.overflow = 'hidden'; // Disable scrolling
+        }
+
+        // Function to enable scrolling
+        function enableScroll() {
+            document.body.style.overflow = 'auto'; // Enable scrolling
+        }
+
+        // Function to hide preloader with a fade-out effect
+        function hidePreloader() {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0'; // Fade out effect
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                enableScroll(); // Enable scrolling after preloader is hidden
+            }, 500); // Delay to allow fade out
+        }
+
+        // Check if the page is fully loaded
+        window.addEventListener('load', () => {
+            hidePreloader();
+            enableScroll(); // Ensure scrolling is enabled when the page is loaded
+        });
+
+        // Disable scrolling while the preloader is visible
+        disableScroll();
+
+        // Simulate loading progress based on user internet connectivity
+        let progress = 0;
+        const progressBar = document.getElementById('progressBar');
+        
+        // Adjust loading interval based on network speed
+        const loadingInterval = setInterval(() => {
+            const increment = Math.random() * (navigator.connection ? (navigator.connection.effectiveType === 'slow-2g' ? 10 : 20) : 20);
+            progress += increment; // Randomize progress increment for a dynamic effect
+            progressBar.style.width = Math.min(progress, 100) + '%'; // Ensure it doesn't exceed 100%
+            if (progress >= 100) {
+                clearInterval(loadingInterval);
+                hidePreloader(); // Fade out preloader
+            }
+        }, 300); // Update every 300ms
+
+        // Web Performance API for better loading experience
+        if (window.performance) {
+            const startTime = performance.now();
+            window.addEventListener('load', () => {
+                const loadTime = performance.now() - startTime;
+                console.log(`Page loaded in ${loadTime.toFixed(2)} ms`);
+            });
+        }
+
+        // Using Intersection Observer for lazy loading of images
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src; // Set the actual image source
+                    img.classList.remove('lazy'); // Remove lazy class
+                    observer.unobserve(img); // Stop observing the image
+                }
+            });
+        });
+
+        lazyImages.forEach(image => {
+            imageObserver.observe(image); // Observe each lazy image
+        });
+    </script>
+    <style>
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+        }
+        .loader {
+            border: 8px solid #f3f3f3; /* Light grey */
+            border-top: 8px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        .loader-text {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out infinite alternate;
+            text-align: center;
+            padding: 0 10px; /* Add padding for better readability on small screens */
+        }
+        .progress-bar {
+            width: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3498db, #8e44ad); /* Gradient for better design */
+            position: fixed; /* Changed to fixed to stay at the top */
+            top: 0; /* Position at the top of the page */
+            left: 0;
+            transition: width 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added shadow for depth */
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .loader {
+                width: 50px;
+                height: 50px;
+                border-width: 6px;
+            }
+            .loader-text {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .loader {
+                width: 40px;
+                height: 40px;
+                border-width: 4px;
+            }
+            .loader-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
     <canvas class="background-animation" id="bgCanvas"></canvas> <!-- Canvas for 3D background -->
 
     <!-- Navbar -->
