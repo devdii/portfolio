@@ -40,7 +40,39 @@
             <div class="stars3"></div>
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1 class="welcome-msg">Welcome!!!</h1>
+                    <h1 class="welcome-msg">
+                        <script>
+                            const greetingElement = document.querySelector('.welcome-msg');
+                            
+                            function updateGreeting() {
+                                const now = new Date();
+                                const hours = now.getHours();
+                                const minutes = now.getMinutes();
+                                const seconds = now.getSeconds();
+                                
+                                // Define greeting based on the current hour
+                                const greeting = hours < 12 ? "Good Morning!" :
+                                                 hours < 18 ? "Good Afternoon!" : "Good Evening!";
+                                                 
+                                // Format the time with Intl.DateTimeFormat for better localization
+                                const timeFormatter = new Intl.DateTimeFormat('en-US', {
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                    second: '2-digit',
+                                    hour12: true
+                                });
+                    
+                                const timeString = timeFormatter.format(now);
+                                
+                                // Update the greeting element with the current greeting and time
+                                greetingElement.innerHTML = `Welcome!!! ${greeting}<br><span class="time">${timeString}</span>`;
+                            }
+                            
+                            updateGreeting();  // Initial call to display greeting immediately
+                            setInterval(updateGreeting, 1000);  // Update every second
+                        </script>
+                    </h1>
+                    
                     <div class="welcome-text">
                         <div class="typewriter">
                             <p class="typewriter-text"></p><span class="cursor"></span>
@@ -213,19 +245,70 @@
             </div>
 
             <!-- Social Links -->
-            <div class="social-link">
-                <ul class="list-unstyled text-center"></ul>
-
-                <h3 id="stay">Stay Connected</h3>
-                <p id="location">Vadodara, Gujarat</p>
-                <p id="email">Devc5@outlook.com</p>
-                <p id="phone">+91 9067715176</p>
-                <hr class="new4">
-                <a href="https://github.com/devdii" class="text-light" style="margin: 0 20px; font-size: 24px;" target="_blank"><i class="bi bi-github"></i></a>
-                <a href="https://www.instagram.com/devdii_/" class="text-light" style="margin: 0 20px; font-size: 24px;" target="_blank"><i class="bi bi-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/dev-chauhan-52b2a4260/" class="text-light" style="margin: 0 20px; font-size: 24px;" target="_blank"><i class="bi bi-linkedin"></i></a>
+            <div class="social-link text-center animated">
+                <h3 id="stay" class="mb-4 fade-in">Stay Connected</h3>
+                <p id="location" class="lead slide-in">
+                    <i class="bi bi-geo-alt-fill"></i> Vadodara, Gujarat
+                </p>
+                <p id="email" class="lead slide-in">
+                    <i class="bi bi-envelope-fill"></i> Email: 
+                    <a href="mailto:Devc5@outlook.com" class="text-light">Devc5@outlook.com</a>
+                </p>
+                <p id="phone" class="lead slide-in">
+                    <i class="bi bi-telephone-fill"></i> Phone: 
+                    <a href="tel:+919067715176" class="text-light">+91 9067715176</a>
+                </p>
+                <hr class="new4 my-4">
+                <div class="social-icons">
+                    <a href="https://github.com/devdii" class="text-light mx-2 social-icon" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                    <a href="https://www.instagram.com/devdii_/" class="text-light mx-2 social-icon" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/dev-chauhan-52b2a4260/" class="text-light mx-2 social-icon" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                </div>
             </div>
-        </div>
+            <style>
+                .social-link {
+                    padding: 30px;
+                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
+                    border-radius: 15px;
+                    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+                    transition: transform 0.3s;
+                }
+                .social-link:hover {
+                    transform: scale(1.02);
+                }
+                .social-link h3 {
+                    font-size: 28px;
+                    color: #ffffff;
+                    animation: fadeIn 1s ease-in-out;
+                }
+                .social-link .lead {
+                    font-size: 18px;
+                    color: #d1d1d1;
+                    animation: slideIn 1s ease-in-out;
+                }
+                .social-icons {
+                    margin-top: 20px;
+                }
+                .social-icon {
+                    font-size: 32px;
+                    transition: transform 0.3s, color 0.3s;
+                }
+                .social-icon:hover {
+                    transform: scale(1.2);
+                    color: #007bff; /* Change color on hover */
+                }
+                .new4 {
+                    border: 1px solid #ffffff;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                @keyframes slideIn {
+                    from { transform: translateY(20px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+            </style>
     </div>
 </section>
 
