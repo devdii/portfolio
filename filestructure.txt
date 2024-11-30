@@ -1,0 +1,17 @@
+|-- appscript.js
+|-- dirdonld.html
+|-- img
+    |-- dp1.JPG
+    |-- food_order_system.png
+    |-- gl ai.png
+    |-- GRID BACKGROUND.jpg
+    |-- magicpattern-starry-night-1728928276772.png
+    |-- nptel certi.png
+    |-- personal_portfolio.png
+    |-- py certi-1.png
+    |-- research paper.png
+    |-- resume.pdf
+    |-- slot_machine.png
+    |-- tic_tac_toe.png
+|-- index.html
+|-- style.css

@@ -1,141 +1,3 @@
-/* Star Backgrounds */
-
-.stars,
-.stars2,
-.stars3 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    /* Ensure stars are behind everything else */
-    pointer-events: none;
-    /* Prevent interaction with stars */
-    background-repeat: repeat;
-    background-size: cover;
-    overflow: hidden;
-    /* Ensure no overflow issues */
-}
-
-
-/* First Layer of Stars */
-
-.stars {
-    background: url('./img/magicpattern-starry-night-1728928276772.png') repeat;
-    animation: moveStars 60s linear infinite, twinkle 3s infinite ease-in-out alternate;
-}
-
-
-
-/* Keyframes for Star Movement */
-
-@keyframes moveStars {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -3000px 1500px;
-    }
-}
-
-@keyframes moveStars2 {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -6000px 3000px;
-    }
-}
-
-@keyframes moveStars3 {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -9000px 4500px;
-    }
-}
-
-
-/* Keyframes for Twinkling Effect */
-
-@keyframes twinkle {
-    0% {
-        opacity: 0.4;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.4;
-    }
-}
-
-
-/* Responsive Background Adjustments */
-
-@media (max-width: 1024px) {
-    .stars,
-    .stars2,
-    .stars3 {
-        background-size: 200% 200%;
-        /* Adjust background size for smaller screens */
-    }
-    .stars {
-        animation: moveStars 50s linear infinite, twinkle 3s infinite ease-in-out alternate;
-    }
-    .stars2 {
-        animation: moveStars2 100s linear infinite, twinkle 5s infinite ease-in-out alternate;
-    }
-    .stars3 {
-        animation: moveStars3 150s linear infinite, twinkle 7s infinite ease-in-out alternate;
-    }
-}
-
-@media (max-width: 768px) {
-    .stars,
-    .stars2,
-    .stars3 {
-        background-size: 300% 300%;
-        /* Further adjust background size */
-    }
-    .stars {
-        animation: moveStars 40s linear infinite, twinkle 3s infinite ease-in-out alternate;
-    }
-    .stars2 {
-        animation: moveStars2 80s linear infinite, twinkle 5s infinite ease-in-out alternate;
-    }
-    .stars3 {
-        animation: moveStars3 120s linear infinite, twinkle 7s infinite ease-in-out alternate;
-    }
-}
-
-@media (max-width: 480px) {
-    .stars,
-    .stars2,
-    .stars3 {
-        background-size: 400% 400%;
-        /* Adjust background size for very small screens */
-    }
-    .stars {
-        animation: moveStars 30s linear infinite, twinkle 3s infinite ease-in-out alternate;
-    }
-    .stars2 {
-        animation: moveStars2 60s linear infinite, twinkle 5s infinite ease-in-out alternate;
-    }
-    .stars3 {
-        animation: moveStars3 90s linear infinite, twinkle 7s infinite ease-in-out alternate;
-    }
-}
-
-body {
-    background-color: #50586C;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #DCE2F0;
-}
 
 
 /* Navbar Styles */
@@ -453,14 +315,6 @@ section {
     text-align: center;
 }
 
-#achievements {
-    background-color: #454C5D;
-    color: #ffffff;
-    z-index: 1;
-    /* Ensure these sections are above the star background */
-    position: relative;
-    /* Allows z-index to take effect */
-}
 
 
 /* Heading Styles */
@@ -578,24 +432,6 @@ section p {
         padding: 8px;
         margin: 5px;
     }
-}
-
-
-/* General Styles */
-
-#contact {
-    position: relative;
-    /* Ensure contact section is positioned correctly */
-    background-color: #50586C;
-    /* Background color */
-    color: #DCE2F0;
-    /* Text color */
-    perspective: 1500px;
-    /* 3D effect perspective */
-    padding: 2rem 0;
-    /* Add padding for better spacing */
-    overflow: hidden;
-    /* Hide overflow to prevent any issues with the background */
 }
 
 
@@ -1100,6 +936,7 @@ footer {
 }
 
 
+
 /* Responsive Styles */
 
 @media (max-width: 768px) {
@@ -1130,31 +967,6 @@ footer {
 }
 
 
-/* Skills Section Styling */
-
-#skills {
-    background-color: #343a40;
-    /* Dark background */
-    color: #f8f9fa;
-    /* Light text color for contrast */
-    padding: 50px 0;
-    /* Padding for spacing */
-    position: relative;
-    /* Relative positioning to stack star layers behind */
-    z-index: 1;
-    /* Ensure #skills is above the star background */
-}
-
-#skills h2 {
-    color: #f8f9fa;
-    /* Light text color for the heading */
-    font-size: 2.5rem;
-    /* Larger font size for emphasis */
-    margin-bottom: 30px;
-    /* Spacing below the heading */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    /* Shadow effect for text */
-}
 
 
 /* Container for skills */
@@ -1247,22 +1059,6 @@ footer {
 }
 
 
-/* Achievements Section */
-
-#achievements {
-    padding: 5rem 0;
-    background-color: #343a40;
-    color: #f8f9fa;
-}
-
-#achievements h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    color: #f8f9fa;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
 
 /* Heading Styles */
 
@@ -1270,6 +1066,7 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
+    z-index: 1;
 }
 
 .heading h2 {
@@ -1294,11 +1091,13 @@ footer {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
     margin-bottom: 2rem;
     transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 1;
 }
 
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .card-body {
@@ -1375,4 +1174,16 @@ hr.new4 {
 
 #email {
     font-size: 1.2rem;
+}
+
+/* 2D Canvas Styles */
+#starCanvas {
+    position: fixed; /* Change to fixed to cover the entire viewport */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    z-index: -1; /* Ensure it is behind all content */
+    background: transparent; /* Ensure the background is transparent */
+    pointer-events: none; /* Allow clicks to pass through the canvas */
 }
