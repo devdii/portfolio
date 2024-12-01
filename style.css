@@ -742,17 +742,15 @@ section p {
 .certi:hover,
 .project:hover {
     background-color: #4a567a;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .certi .card,
 .project .card {
     width: 100%;
     max-width: 100%;
-    border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: transperent;
+    background: transparent; /* Corrected spelling */
 }
 
 .certi .card:hover,
