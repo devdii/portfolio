@@ -1,0 +1,7 @@
+# Ignore image folder
+image/
+
+# Ignore dirdonld.html file
+dirdonld.html
+
+# ... existing entries ...
