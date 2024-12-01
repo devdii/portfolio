@@ -7,40 +7,64 @@
     <title>Dev Chauhan</title>
     <link rel="icon" href="./img/dp1.jpg" type="image/png"> <!-- Enhanced website icon -->
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+        rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script> <!-- Optimized loading of reCAPTCHA -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> <!-- Added Modernizr for feature detection -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <!-- Added Modernizr for feature detection -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Added Google Fonts for better typography -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script> <!-- Added Three.js for 3D graphics -->
-    <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> <!-- Added Lottie for animations -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Added Google Fonts for better typography -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script>
+    <!-- Added Three.js for 3D graphics -->
+    <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <!-- Added Lottie for animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
     <style>
         body {
-            background-color: black; /* Set the background color to black for a starry effect */
+            background-color: black;
+            /* Set the background color to black for a starry effect */
         }
+
         /* 2D Canvas Styles */
         #starCanvas {
-            position: fixed; /* Change to fixed to cover the entire viewport */
-            top: 0; /* Align to the top */
-            left: 0; /* Align to the left */
-            width: 100vw; /* Full viewport width */
-            height: 100vh; /* Full viewport height */
-            z-index: -1; /* Ensure it is behind all content */
-            background: transparent; /* Ensure the background is transparent */
-            pointer-events: none; /* Allow clicks to pass through the canvas */
+            position: fixed;
+            /* Change to fixed to cover the entire viewport */
+            top: 0;
+            /* Align to the top */
+            left: 0;
+            /* Align to the left */
+            width: 100vw;
+            /* Full viewport width */
+            height: 100vh;
+            /* Full viewport height */
+            z-index: -1;
+            /* Ensure it is behind all content */
+            background: transparent;
+            /* Ensure the background is transparent */
+            pointer-events: none;
+            /* Allow clicks to pass through the canvas */
         }
+
         /* Ensure all sections have a background color that allows the starCanvas to be visible */
         section {
-            position: relative; /* Ensure sections are positioned relative for z-index to work */
-            z-index: 1; /* Set z-index higher than starCanvas */
-            padding: 100px 0; /* Maintain padding for sections */
-            text-align: center; /* Center text in sections */
-            background-color: rgba(0, 0, 0, 0.1); /* Darker semi-transparent background for sections */
-            color: #ffffff; /* Ensure text is visible */
+            position: relative;
+            /* Ensure sections are positioned relative for z-index to work */
+            z-index: 1;
+            /* Set z-index higher than starCanvas */
+            padding: 100px 0;
+            /* Maintain padding for sections */
+            text-align: center;
+            /* Center text in sections */
+            background-color: rgba(0, 0, 0, 0.1);
+            /* Darker semi-transparent background for sections */
+            color: #ffffff;
+            /* Ensure text is visible */
         }
     </style>
 </head>
@@ -48,7 +72,7 @@
 <body>
     <canvas id="starCanvas"></canvas>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const canvas = document.getElementById('starCanvas');
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -147,34 +171,46 @@
             align-items: center;
             color: #fff;
             font-family: 'Roboto', sans-serif;
-            overflow: hidden; /* Prevent overflow */
+            overflow: hidden;
+            /* Prevent overflow */
         }
+
         .loader {
-            border: 8px solid #f3f3f3; /* Light grey */
-            border-top: 8px solid #3498db; /* Blue */
+            border: 8px solid #f3f3f3;
+            /* Light grey */
+            border-top: 8px solid #3498db;
+            /* Blue */
             border-radius: 50%;
             width: 60px;
             height: 60px;
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
         }
+
         .loader-text {
             font-size: 1.5rem;
             margin-bottom: 20px;
             animation: fadeIn 2s ease-in-out infinite alternate;
             text-align: center;
-            padding: 0 10px; /* Add padding for better readability on small screens */
+            padding: 0 10px;
+            /* Add padding for better readability on small screens */
         }
+
         .progress-bar {
             width: 0;
             height: 5px;
-            background: linear-gradient(90deg, #3498db, #8e44ad); /* Gradient for better design */
-            position: fixed; /* Changed to fixed to stay at the top */
-            top: 0; /* Position at the top of the page */
+            background: linear-gradient(90deg, #3498db, #8e44ad);
+            /* Gradient for better design */
+            position: fixed;
+            /* Changed to fixed to stay at the top */
+            top: 0;
+            /* Position at the top of the page */
             left: 0;
             transition: width 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added shadow for depth */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            /* Added shadow for depth */
         }
+
         .progress-percentage {
             font-size: 1.2rem;
             position: absolute;
@@ -183,13 +219,25 @@
             color: #fff;
             font-weight: bold;
         }
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
+
         @keyframes fadeIn {
-            from { opacity: 0.5; }
-            to { opacity: 1; }
+            from {
+                opacity: 0.5;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
     </style>
 
@@ -234,7 +282,7 @@
         let progress = 0;
         const progressBar = document.getElementById('progressBar');
         const progressPercentage = document.getElementById('progressPercentage'); // Reference to percentage display
-        
+
         // Adjust loading interval based on network speed
         const loadingInterval = setInterval(() => {
             const increment = Math.random() * (navigator.connection ? (navigator.connection.effectiveType === 'slow-2g' ? 10 : 20) : 20);
@@ -289,39 +337,61 @@
             color: #fff;
             font-family: 'Roboto', sans-serif;
         }
+
         .loader {
-            border: 8px solid #f3f3f3; /* Light grey */
-            border-top: 8px solid #3498db; /* Blue */
+            border: 8px solid #f3f3f3;
+            /* Light grey */
+            border-top: 8px solid #3498db;
+            /* Blue */
             border-radius: 50%;
             width: 60px;
             height: 60px;
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
         }
+
         .loader-text {
             font-size: 1.5rem;
             margin-bottom: 20px;
             animation: fadeIn 2s ease-in-out infinite alternate;
             text-align: center;
-            padding: 0 10px; /* Add padding for better readability on small screens */
+            padding: 0 10px;
+            /* Add padding for better readability on small screens */
         }
+
         .progress-bar {
             width: 0;
             height: 5px;
-            background: linear-gradient(90deg, #3498db, #8e44ad); /* Gradient for better design */
-            position: fixed; /* Changed to fixed to stay at the top */
-            top: 0; /* Position at the top of the page */
+            background: linear-gradient(90deg, #3498db, #8e44ad);
+            /* Gradient for better design */
+            position: fixed;
+            /* Changed to fixed to stay at the top */
+            top: 0;
+            /* Position at the top of the page */
             left: 0;
             transition: width 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added shadow for depth */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            /* Added shadow for depth */
         }
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
+
         @keyframes fadeIn {
-            from { opacity: 0.5; }
-            to { opacity: 1; }
+            from {
+                opacity: 0.5;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         /* Responsive Styles */
@@ -331,6 +401,7 @@
                 height: 50px;
                 border-width: 6px;
             }
+
             .loader-text {
                 font-size: 1.2rem;
             }
@@ -342,6 +413,7 @@
                 height: 40px;
                 border-width: 4px;
             }
+
             .loader-text {
                 font-size: 1rem;
             }
@@ -351,7 +423,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 3; position: relative;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#home">Dev Chauhan</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -366,45 +439,50 @@
     </nav>
 
     <!-- Home Section -->
-    <section id="home" class="py-5 text-light" style="z-index: 2; position: relative; background-color: rgba(0, 0, 0, 0.8);">
+    <section id="home" class="py-5 text-light"
+        style="z-index: 2; position: relative; background-color: rgba(0, 0, 0, 0.8);">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <h1 class="welcome-msg">
                         <script>
                             const greetingElement = document.querySelector('.welcome-msg');
-                            
+
                             function updateGreeting() {
                                 const now = new Date();
                                 const hours = now.getHours();
-                                
+
                                 // Define greeting based on the current hour
                                 const greeting = hours >= 5 && hours < 12 ? "Good Morning!" :
-                                                 hours >= 12 && hours < 16 ? "Good Afternoon!" : 
-                                                 hours >= 16 && hours < 19 ? "Good Evening!" :
-                                                 "Good Night!";
-                                                 
+                                    hours >= 12 && hours < 16 ? "Good Afternoon!" :
+                                        hours >= 16 && hours < 19 ? "Good Evening!" :
+                                            "Good Night!";
+
                                 // Update the greeting element with the current greeting
                                 greetingElement.innerHTML = `Welcome!!! ${greeting}`;
                             }
-                            
+
                             updateGreeting();  // Initial call to display greeting immediately
                             setInterval(updateGreeting, 1000);  // Update every second
                         </script>
                     </h1>
-                    
+
                     <div class="welcome-text">
                         <div class="typewriter">
                             <p class="typewriter-text"></p><span class="cursor"></span>
                         </div>
                         <p>
-                            <strong>A Master of Computer Applications (MCA) student specializing in Artificial Intelligence at Parul University.</strong>
+                            <strong>A Master of Computer Applications (MCA) student specializing in Artificial
+                                Intelligence at Parul University.</strong>
                             <br><br> I am proficient in several programming languages, including
                             <span style="color: #ff5722; font-weight: bold;">Python</span> &
-                            <span style="color: #3f51b5; font-weight: bold;">Java</span>, and have a strong foundation in software development and database management.
-                            <br><br> My education at Parul University has equipped me with the skills and knowledge necessary to tackle complex IT challenges and develop innovative solutions.
+                            <span style="color: #3f51b5; font-weight: bold;">Java</span>, and have a strong foundation
+                            in software development and database management.
+                            <br><br> My education at Parul University has equipped me with the skills and knowledge
+                            necessary to tackle complex IT challenges and develop innovative solutions.
                             <br><br>
-                            <em style="color: #555;">You can reach out to me using the contact information below.</em><br>
+                            <em style="color: #555;">You can reach out to me using the contact information
+                                below.</em><br>
                         </p>
                         <div download class="download-resume">
                             <a href="./img/resume.pdf" download class="download-resume">
@@ -459,309 +537,407 @@
         <div class="heading text-center mb-4 ">
             <h2 id="projects">Projects</h2>
         </div>
-<!-- Projects Section -->
-<section id="Project" class="py-5 text-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Food Order System</h5>
-                        <p class="card-text">This is a PHP-based project where the user can choose and add items to the cart.</p>
-                        <a href="https://github.com/devdii/online-food-order-system" class="btn btn-primary" target="_blank">View Code</a>
-                        <img src="./img/food_order_system.png" class="img-fluid project-img mt-3" alt="Food Order System Project">
+        <!-- Projects Section -->
+        <section id="Project" class="py-5 text-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Food Order System</h5>
+                                <p class="card-text">This is a PHP-based project where the user can choose and add items
+                                    to the cart.</p>
+                                <a href="https://github.com/devdii/online-food-order-system" class="btn btn-primary"
+                                    target="_blank">View Code</a>
+                                <img src="./img/food_order_system.png" class="img-fluid project-img mt-3"
+                                    alt="Food Order System Project">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Personal Portfolio</h5>
+                                <p class="card-text">This is a simple portfolio website created using HTML, CSS, and
+                                    JavaScript.</p>
+                                <a href="https://github.com/devdii/personal-portfolio" class="btn btn-primary"
+                                    target="_blank">View Code</a>
+                                <img src="./img/personal_portfolio.png" class="img-fluid project-img mt-3"
+                                    alt="Personal Portfolio Project">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Slot Machine</h5>
+                                <p class="card-text">This JavaScript project features interactive icons and dynamic
+                                    player results.</p>
+                                <a href="https://github.com/devdii/slot-machine" class="btn btn-primary"
+                                    target="_blank">View Code</a>
+                                <img src="./img/slot_machine.png" class="img-fluid project-img mt-3"
+                                    alt="Slot Machine Project">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Personal Portfolio</h5>
-                        <p class="card-text">This is a simple portfolio website created using HTML, CSS, and JavaScript.</p>
-                        <a href="https://github.com/devdii/personal-portfolio" class="btn btn-primary" target="_blank">View Code</a>
-                        <img src="./img/personal_portfolio.png" class="img-fluid project-img mt-3" alt="Personal Portfolio Project">
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-5" style="z-index: 2; position: relative;">
+            <div class="container">
+                <div class="row">
+                    <!-- Contact Form -->
+                    <div>
+                        <h2 class="text-center mb-4">Contact Me</h2>
+                        <form name="submit-to-google-sheet" id="contact-form" onsubmit="return sendMail();"
+                            method="POST">
+
+                            <div class="mb-3">
+                                <input type="text" id="Name" name="NAME" class="form-control"
+                                    placeholder="Enter Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" id="Email" name="EMAIL" class="form-control"
+                                    placeholder="Enter Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <textarea name="MESSAGE" id="MESSAGE" class="form-control" rows="5"
+                                    placeholder="Enter Message or Query Here..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send</button>
+                            <div id="msg" class="mt-3 text-center"></div>
+                            <div id="successMessage" class="message success" style="display:none;"></div>
+                            <!-- Success message -->
+                            <div id="errorMessage" class="message error" style="display:none;"></div>
+                            <!-- Error message --> <!-- Error message --> <!-- Message display area -->
+                        </form>
                     </div>
+
+                    <!-- Social Links -->
+                    <div class="social-link text-center animated">
+                        <h3 id="stay" class="mb-4 fade-in">Stay Connected</h3>
+                        <p id="location" class="lead slide-in">
+                            <i class="bi bi-geo-alt-fill"></i> Vadodara, Gujarat
+                        </p>
+                        <p id="email" class="lead slide-in">
+                            <i class="bi bi-envelope-fill"></i> Email:
+                            <a href="mailto:Devc5@outlook.com" class="text-light">Devc5@outlook.com</a>
+                        </p>
+                        <p id="phone" class="lead slide-in">
+                            <i class="bi bi-telephone-fill"></i> Phone:
+                            <a href="tel:+91 9067715176" class="text-light">+91 9067715176</a>
+                        </p>
+                        <hr class="new4 my-4">
+                        <div class="social-icons">
+                            <a href="https://github.com/devdii" class="text-light mx-2 social-icon" target="_blank"
+                                aria-label="GitHub"><i class="bi bi-github"></i></a>
+                            <a href="https://www.instagram.com/devdii_/" class="text-light mx-2 social-icon"
+                                target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/dev-chauhan-52b2a4260/"
+                                class="text-light mx-2 social-icon" target="_blank" aria-label="LinkedIn"><i
+                                    class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <style>
+                        .social-link {
+                            padding: 30px;
+                            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
+                            border-radius: 15px;
+                            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+                            transition: transform 0.3s;
+                        }
+
+                        .social-link:hover {
+                            transform: scale(1.02);
+                        }
+
+                        .social-link h3 {
+                            font-size: 28px;
+                            color: #ffffff;
+                            animation: fadeIn 1s ease-in-out;
+                        }
+
+                        .social-link .lead {
+                            font-size: 18px;
+                            color: #d1d1d1;
+                            animation: slideIn 1s ease-in-out;
+                        }
+
+                        .social-icons {
+                            margin-top: 20px;
+                        }
+
+                        .social-icon {
+                            font-size: 32px;
+                            transition: transform 0.3s, color 0.3s;
+                        }
+
+                        .social-icon:hover {
+                            transform: scale(1.2);
+                            color: #007bff;
+                            /* Change color on hover */
+                        }
+
+                        .new4 {
+                            border: 1px solid #ffffff;
+                        }
+
+                        @keyframes fadeIn {
+                            from {
+                                opacity: 0;
+                            }
+
+                            to {
+                                opacity: 1;
+                            }
+                        }
+
+                        @keyframes slideIn {
+                            from {
+                                transform: translateY(20px);
+                                opacity: 0;
+                            }
+
+                            to {
+                                transform: translateY(0);
+                                opacity: 1;
+                            }
+                        }
+                    </style>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Slot Machine</h5>
-                        <p class="card-text">This JavaScript project features interactive icons and dynamic player results.</p>
-                        <a href="https://github.com/devdii/slot-machine" class="btn btn-primary" target="_blank">View Code</a>
-                        <img src="./img/slot_machine.png" class="img-fluid project-img mt-3" alt="Slot Machine Project">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- Contact Section -->
-<section id="contact" class="py-5" style="z-index: 2; position: relative;">
-    <div class="container">
-        <div class="row">
-            <!-- Contact Form -->
-            <div>
-                <h2 class="text-center mb-4">Contact Me</h2>
-                <form name="submit-to-google-sheet" id="contact-form" onsubmit="return sendMail();" method="POST">
-                    <div class="mb-3">
-                        <input type="text" id="Name" name="NAME" class="form-control" placeholder="Enter Your Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="email" id="Email" name="EMAIL" class="form-control" placeholder="Enter Your Email" required>
-                    </div>
-                    <div class="mb-3">
-                        <textarea name="MESSAGE" id="MESSAGE" class="form-control" rows="5" placeholder="Enter Message or Query Here..." required></textarea>
-                    </div>
-                   
-                    <button type="submit" class="btn btn-primary">Send</button>
-                    <div id="msg" class="mt-3 text-center"></div>
-                </form>
-            </div>
+        <script>
+            function doPost(e) {
+                // Your existing logic to handle the incoming data
+                var response = { status: 'success', message: 'Data received!' };
 
-            <!-- Social Links -->
-            <div class="social-link text-center animated">
-                <h3 id="stay" class="mb-4 fade-in">Stay Connected</h3>
-                <p id="location" class="lead slide-in">
-                    <i class="bi bi-geo-alt-fill"></i> Vadodara, Gujarat
-                </p>
-                <p id="email" class="lead slide-in">
-                    <i class="bi bi-envelope-fill"></i> Email: 
-                    <a href="mailto:Devc5@outlook.com" class="text-light">Devc5@outlook.com</a>
-                </p>
-                <p id="phone" class="lead slide-in">
-                    <i class="bi bi-telephone-fill"></i> Phone: 
-                    <a href="tel:+919067715176" class="text-light">+91 9067715176</a>
-                </p>
-                <hr class="new4 my-4">
-                <div class="social-icons">
-                    <a href="https://github.com/devdii" class="text-light mx-2 social-icon" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                    <a href="https://www.instagram.com/devdii_/" class="text-light mx-2 social-icon" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/dev-chauhan-52b2a4260/" class="text-light mx-2 social-icon" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                </div>
-            </div>
-            <style>
-                .social-link {
-                    padding: 30px;
-                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
-                    border-radius: 15px;
-                    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-                    transition: transform 0.3s;
-                }
-                .social-link:hover {
-                    transform: scale(1.02);
-                }
-                .social-link h3 {
-                    font-size: 28px;
-                    color: #ffffff;
-                    animation: fadeIn 1s ease-in-out;
-                }
-                .social-link .lead {
-                    font-size: 18px;
-                    color: #d1d1d1;
-                    animation: slideIn 1s ease-in-out;
-                }
-                .social-icons {
-                    margin-top: 20px;
-                }
-                .social-icon {
-                    font-size: 32px;
-                    transition: transform 0.3s, color 0.3s;
-                }
-                .social-icon:hover {
-                    transform: scale(1.2);
-                    color: #007bff; /* Change color on hover */
-                }
-                .new4 {
-                    border: 1px solid #ffffff;
-                }
-                @keyframes fadeIn {
-                    from { opacity: 0; }
-                    to { opacity: 1; }
-                }
-                @keyframes slideIn {
-                    from { transform: translateY(20px); opacity: 0; }
-                    to { transform: translateY(0); opacity: 1; }
-                }
-            </style>
-    </div>
-</section>
+                // Create a JSON response with CORS headers
+                return ContentService.createTextOutput(JSON.stringify(response))
+                    .setMimeType(ContentService.MimeType.JSON)
+                    .setHeaders({
+                        'Access-Control-Allow-Origin': '*', // Allow all origins
+                        'Access-Control-Allow-Methods': 'POST', // Allow POST method
+                        'Access-Control-Allow-Headers': 'Content-Type' // Allow Content-Type header
+                    });
+            }
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzytbnMpGza_3OghB9fR7StSyyWZqgFCdymFX12VaAjeWhzr8U_imu6a1CSPgir1zbjuA/exec';
+            const form = document.getElementById('contact-form');
+            const msg = document.getElementById('msg');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
 
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzytbnMpGza_3OghB9fR7StSyyWZqgFCdymFX12VaAjeWhzr8U_imu6a1CSPgir1zbjuA/exec';
-    const form = document.getElementById('contact-form');
-    const msg = document.getElementById('msg');
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                console.log('Form submitted'); // Log when the form is submitted
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-
-        // Check if reCAPTCHA is checked
-        const captchaResponse = grecaptcha.getResponse();
-        if (captchaResponse.length === 0) {
-            msg.innerHTML = "<span class='text-danger'>Please verify that you are not a robot.</span>";
-            return; // Stop the form submission
-        }
-
-        fetch(scriptURL, {
-                method: 'POST',
-                body: new FormData(form),
-                mode: 'no-cors' // Set mode to 'no-cors' to bypass CORS policy
-            })
-            .then(response => {
-                msg.innerHTML = "<span class='text-success'>Message Sent Successfully!, Check Your Email for details.</span>";
-                setTimeout(() => {
-                    msg.innerHTML = "";
-                }, 20000); // Message will be visible for 20 seconds
-                form.reset();
-            })
-            .catch(error => {
-                msg.innerHTML = "<span class='text-danger'>Failed to send message. Please try again.</span>";
-                console.error('Error!', error.message);
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    mode: 'no-cors' // Set mode to 'no-cors' to bypass CORS policy
+                })
+                    .then(response => {
+                        successMessage.style.display = 'block'; // Show success message
+                        successMessage.innerHTML = "Message sent successfully! Check your email for details.";
+                        form.reset(); // Reset the form after successful submission
+                        errorMessage.style.display = 'none'; // Hide error message
+                        console.log('Message sent successfully'); // Log success
+                    })
+                    .catch(error => {
+                        errorMessage.style.display = 'block'; // Show error message
+                        errorMessage.innerHTML = "Failed to send message. Please try again.";
+                        console.error('Error!', error.message);
+                    });
             });
-    });
-</script>
+        </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybL1Kv5KLr2M9+97xGp8e3FJw3NzEfl1k4wE9k3FkfD4ZlTC0r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-c1tZq52a0Gb7oFwB+88ik39WaC5CUm2A5pKb9j9Hc4e8i3m7S9P1xDabMpe1+GhC" crossorigin="anonymous"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var scroll = new SmoothScroll('a[href*="#"]', {
-            speed: 800,
-            speedAsDuration: true,
-            offset: 70
-        });
-    });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var navbarToggler = document.querySelector('.navbar-toggler');
-        var navbarCollapse = document.querySelector('#navbarNav');
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+            crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var scroll = new SmoothScroll('a[href*="#"]', {
+                    speed: 800,
+                    speedAsDuration: true,
+                    offset: 70
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var navbarToggler = document.querySelector('.navbar-toggler');
+                var navbarCollapse = document.querySelector('#navbarNav');
 
-        navbarToggler.addEventListener('click', function() {
-            navbarCollapse.classList.toggle('show');
-        });
-    });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const texts = ["Hello! I am Dev Chauhan.", "Welcome to my portfolio.", "Enjoy your stay!"];
-        const typewriterElement = document.querySelector('.typewriter-text');
-        const cursorElement = document.querySelector('.cursor');
-        let textIndex = 0;
-        let charIndex = 0;
-        const typingSpeed = 60; // Optimized typing speed for a more engaging effect
-        const deletingSpeed = 30; // Optimized deleting speed for a snappier feel
-        const delayBetweenTexts = 1000; // Optimized delay for smoother transitions
-        const soundEffect = new Audio('path/to/typing-sound.mp3'); // Sound effect for typing
+                navbarToggler.addEventListener('click', function () {
+                    navbarCollapse.classList.toggle('show');
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const texts = ["Hello! I am Dev Chauhan.", "Welcome to my portfolio.", "Enjoy your stay!"];
+                const typewriterElement = document.querySelector('.typewriter-text');
+                const cursorElement = document.querySelector('.cursor');
+                let textIndex = 0;
+                let charIndex = 0;
+                const typingSpeed = 60; // Optimized typing speed for a more engaging effect
+                const deletingSpeed = 30; // Optimized deleting speed for a snappier feel
+                const delayBetweenTexts = 1000; // Optimized delay for smoother transitions
 
-        function type() {
-            if (charIndex < texts[textIndex].length) {
-                typewriterElement.innerHTML += texts[textIndex].charAt(charIndex);
-                charIndex++;
-                soundEffect.play(); // Play typing sound
-                setTimeout(type, typingSpeed);
-            } else {
-                cursorElement.classList.add('blink'); // Add blinking effect to cursor
-                setTimeout(deleteText, delayBetweenTexts);
-            }
-        }
+                function type() {
+                    if (charIndex < texts[textIndex].length) {
+                        typewriterElement.innerHTML += texts[textIndex].charAt(charIndex);
+                        charIndex++; // Removed the extraneous '='
+                        setTimeout(type, typingSpeed);
+                    } else {
+                        cursorElement.classList.add('blink'); // Add blinking effect to cursor
+                        setTimeout(deleteText, delayBetweenTexts);
+                    }
+                }
 
-        function deleteText() {
-            if (charIndex > 0) {
-                typewriterElement.innerHTML = texts[textIndex].substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(deleteText, deletingSpeed);
-            } else {
-                cursorElement.classList.remove('blink'); // Remove blinking effect when typing starts
-                textIndex = (textIndex + 1) % texts.length;
-                setTimeout(type, typingSpeed);
-            }
-        }
+                function deleteText() {
+                    if (charIndex > 0) {
+                        typewriterElement.innerHTML = texts[textIndex].substring(0, charIndex - 1);
+                        charIndex--;
+                        setTimeout(deleteText, deletingSpeed);
+                    } else {
+                        cursorElement.classList.remove('blink'); // Remove blinking effect when typing starts
+                        textIndex = (textIndex + 1) % texts.length;
+                        setTimeout(type, typingSpeed);
+                    }
+                }
 
-        function startTyping() {
-            typewriterElement.innerHTML = '';
-            charIndex = 0;
-            cursorElement.classList.add('blink'); // Start with cursor blinking
-            type();
-        }
+                function startTyping() {
+                    typewriterElement.innerHTML = '';
+                    charIndex = 0;
+                    cursorElement.classList.add('blink'); // Start with cursor blinking
+                    type();
+                }
 
-        // Add a futuristic animation effect to the typewriter element
-        typewriterElement.style.transition = "transform 0.5s ease-in-out";
-        typewriterElement.style.transform = "scale(1.1)"; // Slightly scale up for effect
-        setTimeout(() => {
-            typewriterElement.style.transform = "scale(1)"; // Scale back to normal
-        }, 500);
+                // Add a futuristic animation effect to the typewriter element
+                typewriterElement.style.transition = "transform 0.5s ease-in-out";
+                typewriterElement.style.transform = "scale(1.1)"; // Slightly scale up for effect
+                setTimeout(() => {
+                    typewriterElement.style.transform = "scale(1)"; // Scale back to normal
+                }, 500);
 
-        startTyping(); // Start typing effect on page load
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script type="text/javascript">
-    // Initialize EmailJS with your EmailJS user ID
-    (function() {
-        emailjs.init("gAu2jSkT5Yhcu0qPA");
-    })();
+                startTyping(); // Start typing effect on page load
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <script type="text/javascript">
+            // Initialize EmailJS with your EmailJS user ID
+            (function () {
+                emailjs.init("gAu2jSkT5Yhcu0qPA");
+            })();
 
-    // Function to send email using EmailJS and handle form submission
-    async function sendMail() {
-        try {
-            const formData = new FormData(document.getElementById("contact-form"));
-            const params = {
-                name: formData.get("NAME"),
-                email: formData.get("EMAIL"),
-                message: formData.get("MESSAGE"),
-                timestamp: new Date().toISOString(), // Adding timestamp for tracking
-            };
-
-            // Validate email format
-            if (!validateEmail(params.email)) {
-                throw new Error("Invalid email format.");
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(String(email).toLowerCase());
             }
 
-            // Send email using EmailJS
-            const response = await emailjs.send("service_zxfpkie", "template_2xtwqdo", params);
-            console.log("Email sent:", response);
-            document.getElementById("successMessage").style.display = "block";
-            document.getElementById("errorMessage").style.display = "none";
+            async function sendMail() {
+                try {
+                    const formData = new FormData(document.getElementById("contact-form"));
+                    const params = {
+                        name: formData.get("NAME"),
+                        email: formData.get("EMAIL"),
+                        message: formData.get("MESSAGE"),
+                        timestamp: new Date().toISOString(), // Adding timestamp for tracking
+                    };
 
-            // Advanced feature: Send a confirmation SMS using Twilio
-            await sendConfirmationSMS(params.phone); // Assuming phone number is collected in the form
+                    // Validate email format
+                    if (!validateEmail(params.email)) {
+                        throw new Error("Invalid email format.");
+                    }
 
-            // New advanced feature: Log the interaction to a database
-            await logInteractionToDatabase(params);
-            
-            // New advanced feature: Send a personalized follow-up email
-            await sendFollowUpEmail(params.email, params.name);
-        } catch (error) {
-            console.error("Error sending email:", error);
-            document.getElementById("errorMessage").style.display = "block";
-            document.getElementById("successMessage").style.display = "none";
-            alert("Failed to send message via email. Please try again later.");
-        }
-    }
+                    // Send email using EmailJS
+                    const response = await emailjs.send("service_zxfpkie", "template_2xtwqdo", params);
+                    console.log("Email sent:", response);
+                    document.getElementById("successMessage").style.display = "block";
+                    document.getElementById("errorMessage").style.display = "none";
 
-    // Function to validate email format
-    function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(String(email).toLowerCase());
-    }
+                    // Send data to Google Sheets
+                    await fetch(scriptURL, {
+                        method: 'POST',
+                        body: new URLSearchParams(params), // Send data as URL-encoded
+                    });
 
-    // New function to send a personalized follow-up email
-    async function sendFollowUpEmail(email, name) {
-        const followUpParams = {
-            to: email,
-            subject: "Thank You for Contacting Us!",
-            body: `Hi ${name},\n\nThank you for reaching out! We appreciate your message and will get back to you shortly.\n\nBest regards,\nDev Chauhan`
-        };
+                    // Reset the form after successful submission
+                    document.getElementById("contact-form").reset();
+                } catch (error) {
+                    console.error("Error sending email:", error);
+                    document.getElementById("errorMessage").style.display = "block";
+                    document.getElementById("successMessage").style.display = "none";
+                    alert("Failed to send message via email. Please try again later.");
+                }
+            }
 
-        const response = await emailjs.send("service_zxfpkie", "template_followup", followUpParams);
-        if (!response.ok) {
-            throw new Error("Failed to send follow-up email.");
-        }
-    }
-</script>
+            // New function to send a personalized follow-up email
+            async function sendFollowUpEmail(email, name) {
+                const followUpParams = {
+                    to: email,
+                    subject: "Thank You for Contacting Us!",
+                    body: `Hi ${name},\n\nThank you for reaching out! We appreciate your message and will get back to you shortly.\n\nBest regards,\nDev Chauhan`
+                };
 
-</body>
+                const response = await emailjs.send("service_zxfpkie", "template_followup", followUpParams);
+                if (!response.ok) {
+                    throw new Error("Failed to send follow-up email.");
+                }
+            }
+        </script>
+
+        <style>
+            /* Message Styles */
+            .message {
+                padding: 10px 15px;
+                border-radius: 5px;
+                margin-top: 10px;
+                text-align: center;
+                font-size: 1rem;
+                /* Responsive font size */
+                transition: all 0.3s ease;
+                /* Smooth transition for visibility */
+            }
+
+            .success {
+                background-color: #d4edda;
+                /* Light green background */
+                color: #155724;
+                /* Dark green text */
+                border: 1px solid #c3e6cb;
+                /* Green border */
+            }
+
+            .error {
+                background-color: #f8d7da;
+                /* Light red background */
+                color: #721c24;
+                /* Dark red text */
+                border: 1px solid #f5c6cb;
+                /* Red border */
+            }
+
+            /* Responsive Styles */
+            @media (max-width: 768px) {
+                .message {
+                    font-size: 0.9rem;
+                    /* Slightly smaller font on smaller screens */
+                }
+            }
+
+            @media (max-width: 480px) {
+                .message {
+                    font-size: 0.8rem;
+                    /* Even smaller font on very small screens */
+                }
+            }
+        </style>
+
+        </body>
 
 </html>
