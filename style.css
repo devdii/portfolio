@@ -349,7 +349,7 @@ section p {
 /* Card Styles */
 
 .card {
-    background-color: #50586C;
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     padding: 20px;
     margin: 20px;
@@ -752,6 +752,7 @@ section p {
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: transperent;
 }
 
 .certi .card:hover,
