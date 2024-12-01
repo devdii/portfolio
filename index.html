@@ -16,43 +16,190 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Added Google Fonts for better typography -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script> <!-- Added Three.js for 3D graphics -->
     <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> <!-- Added Lottie for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         body {
-            overflow: auto; /* Allow scrolling for responsiveness */
+            background-color: black; /* Set the background color to black for a starry effect */
         }
-        .background-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+        /* 2D Canvas Styles */
+        #starCanvas {
+            position: fixed; /* Change to fixed to cover the entire viewport */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            z-index: -1; /* Ensure it is behind all content */
+            background: transparent; /* Ensure the background is transparent */
+            pointer-events: none; /* Allow clicks to pass through the canvas */
         }
-
-        @media (max-width: 768px) {
-            .background-animation {
-                height: auto; /* Adjust height for smaller screens */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .background-animation {
-                height: auto; /* Adjust height for very small screens */
-            }
+        /* Ensure all sections have a background color that allows the starCanvas to be visible */
+        section {
+            position: relative; /* Ensure sections are positioned relative for z-index to work */
+            z-index: 1; /* Set z-index higher than starCanvas */
+            padding: 100px 0; /* Maintain padding for sections */
+            text-align: center; /* Center text in sections */
+            background-color: rgba(0, 0, 0, 0.1); /* Darker semi-transparent background for sections */
+            color: #ffffff; /* Ensure text is visible */
         }
     </style>
 </head>
 
 <body>
+    <canvas id="starCanvas"></canvas>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('starCanvas');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const context = canvas.getContext("2d");
+
+            let numStars = 3000;
+            const stars = [];
+            let speed = 8;
+
+            let mouseX = canvas.width / 2;
+            let mouseY = canvas.height / 2;
+
+            function createStar() {
+                let x, y;
+                do {
+                    x = Math.random() * canvas.width;
+                    y = Math.random() * canvas.height;
+                } while (Math.hypot(x - mouseX, y - mouseY) < 3);
+
+                return {
+                    x,
+                    y,
+                    z: Math.random() * canvas.width,
+                    o: Math.random(),
+                    size: Math.random() * 3 + 2 // Random size between 3 and 6
+                };
+            }
+
+            function populateStars() {
+                stars.length = 0;
+                for (let i = 0; i < numStars; i++) {
+                    stars.push(createStar());
+                }
+            }
+
+            canvas.addEventListener('mousemove', (event) => {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.code === 'ArrowUp' || event.code === 'KeyW') {
+                    speed += 1;
+                } else if (event.code === 'ArrowDown' || event.code === 'KeyS') {
+                    speed = Math.max(1, speed - 1);
+                } else if (event.code === 'NumpadAdd') {
+                    numStars += 100;
+                    populateStars();
+                } else if (event.code === 'NumpadSubtract') {
+                    numStars = Math.max(100, numStars - 100);
+                    populateStars();
+                }
+            });
+
+            function updateStars() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.fillStyle = "rgba(0, 0, 0, 0.11)"; // Darker background overlay
+                context.fillRect(0, 0, canvas.width, canvas.height); // Draw the background
+
+                for (let star of stars) {
+                    star.z -= speed;
+
+                    if (star.z <= 0) {
+                        Object.assign(star, createStar());
+                        star.z = canvas.width;
+                    }
+
+                    const sx = (star.x - mouseX) * (canvas.width / star.z) + mouseX;
+                    const sy = (star.y - mouseY) * (canvas.width / star.z) + mouseY;
+                    const size = (1 - star.z / canvas.width) * star.size;
+                    context.fillStyle = "rgba(255, 255, 255, 0.7)"; // Darker stars
+                    context.fillRect(sx, sy, size, size);
+                }
+
+                requestAnimationFrame(updateStars);
+            }
+
+            populateStars();
+            updateStars();
+        });
+    </script>
+    <style>
+        /* Enhanced Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden; /* Prevent overflow */
+        }
+        .loader {
+            border: 8px solid #f3f3f3; /* Light grey */
+            border-top: 8px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        .loader-text {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out infinite alternate;
+            text-align: center;
+            padding: 0 10px; /* Add padding for better readability on small screens */
+        }
+        .progress-bar {
+            width: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3498db, #8e44ad); /* Gradient for better design */
+            position: fixed; /* Changed to fixed to stay at the top */
+            top: 0; /* Position at the top of the page */
+            left: 0;
+            transition: width 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added shadow for depth */
+        }
+        .progress-percentage {
+            font-size: 1.2rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-weight: bold;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+    </style>
+
     <div id="preloader">
         <div class="loader"></div>
         <div class="loader-text">Loading, please wait...</div>
         <div class="progress-bar" id="progressBar"></div>
-        <div class="additional-message">This may take a moment, thank you for your patience!</div>
-        <div class="spinner-container">
-            <div class="spinner"></div>
-        </div>
+        <div class="progress-percentage" id="progressPercentage">0%</div> <!-- Added percentage display -->
     </div>
+
     <script>
         // Function to disable scrolling
         function disableScroll() {
@@ -86,12 +233,14 @@
         // Simulate loading progress based on user internet connectivity
         let progress = 0;
         const progressBar = document.getElementById('progressBar');
+        const progressPercentage = document.getElementById('progressPercentage'); // Reference to percentage display
         
         // Adjust loading interval based on network speed
         const loadingInterval = setInterval(() => {
             const increment = Math.random() * (navigator.connection ? (navigator.connection.effectiveType === 'slow-2g' ? 10 : 20) : 20);
             progress += increment; // Randomize progress increment for a dynamic effect
             progressBar.style.width = Math.min(progress, 100) + '%'; // Ensure it doesn't exceed 100%
+            progressPercentage.innerText = Math.min(Math.floor(progress), 100) + '%'; // Update percentage display
             if (progress >= 100) {
                 clearInterval(loadingInterval);
                 hidePreloader(); // Fade out preloader
@@ -198,8 +347,6 @@
             }
         }
     </style>
-    <canvas class="background-animation" id="bgCanvas"></canvas> <!-- Canvas for 3D background -->
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 3; position: relative;">
         <div class="container-fluid">
@@ -221,8 +368,6 @@
     <!-- Home Section -->
     <section id="home" class="py-5 text-light" style="z-index: 2; position: relative; background-color: rgba(0, 0, 0, 0.8);">
         <div class="container">
-            <!-- Star Background Layers -->
-            <div class="stars"></div>
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <h1 class="welcome-msg">
@@ -277,39 +422,11 @@
             </div>
         </div>
     </section>
-
-    <script>
-        // 3D Background Animation
-        const canvas = document.getElementById('bgCanvas');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        
-        const geometry = new THREE.SphereGeometry(15, 32, 32);
-        const material = new THREE.MeshBasicMaterial({ color: 0x0077ff, wireframe: true });
-        const sphere = new THREE.Mesh(geometry, material);
-        scene.add(sphere);
-        
-        camera.position.z = 30;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            sphere.rotation.x += 0.01;
-            sphere.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
 </body>
 
 <!-- Skills Section -->
-<section id="skills" class="py-5">
-    <canvas class="background-animation" id="bgCanvas"></canvas>
+<section id="skills" class="py-5" style="z-index: 2; position: relative;">
     <div class="container">
-        <div class="stars"></div>
-        <div class="stars2"></div>
-        <div class="stars3"></div>
         <h2 class="text-center mb-4">Skills</h2>
         <div class="skills-container">
             <div class="skill-card">
@@ -336,6 +453,50 @@
     </div>
 </section>
 
+<!-- Achievements Section -->
+<section id="achievements" class="py-5" style="z-index: 2; position: relative;">
+    <div class="container">
+        <h2 class="text-center mb-5">Achievements</h2>
+        <hr>
+        <div class="heading text-center mb-4">
+            <h2 id="certificates">Certificates</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cisco Python-Essentials-1</h5>
+                        <p class="card-text">I have successfully completed the Cisco Python course, acquiring proficiency in Python programming.</p>
+                        <a href="./img/py certi-1.png" class="btn btn-primary" target="_blank">View Certificate</a>
+                        <img src="./img/py certi-1.png" class="img-fluid certi-img mt-3" alt="Cisco Python-Essentials-1 Certificate">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Nptel Network & Protocol</h5>
+                        <p class="card-text">It will help me gain expertise in network architecture, protocols, routing, data transmission, and network security.</p>
+                        <a href="./img/nptel certi.png" class="btn btn-primary" target="_blank">View Certificate</a>
+                        <img src="./img/nptel certi.png" class="img-fluid certi-img mt-3" alt="Nptel Network & Protocol Certificate">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Research Paper</h5>
+                        <p class="card-text">I authored a research paper on AI in finance and presented it at an international conference.</p>
+                        <a href="./img/research paper.png" class="btn btn-primary" target="_blank">View Certificate</a>
+                        <img src="./img/research paper.png" class="img-fluid certi-img mt-3" alt="Research Paper Certificate">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="heading text-center mb-4">
+            <h2 id="projects">Projects</h2>
+        </div>
 <!-- Projects Section -->
 <section id="Projects" class="py-5 bg-dark text-light">
     <canvas class="background-animation" id="bgCanvas"></canvas>
@@ -380,12 +541,8 @@
 </section>
 
 <!-- Contact Section -->
-<section id="contact" class="py-5 bg-dark text-light">
-    <canvas class="background-animation" id="bgCanvas"></canvas>
+<section id="contact" class="py-5" style="z-index: 2; position: relative;">
     <div class="container">
-        <div class="stars"></div>
-        <div class="stars2"></div>
-        <div class="stars3"></div>
         <div class="row">
             <!-- Contact Form -->
             <div>
